@@ -75,7 +75,7 @@ def quiz_game():
         
         if elapsed_time > time_limit:
             print("TIme's up!")
-            continue
+            continue   # to the next question
         
         if user_answer == question['answer']:
             print("Correct!")
