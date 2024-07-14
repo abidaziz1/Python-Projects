@@ -1,0 +1,54 @@
+Victim's ARP Table:
+
+Original Entry: 10.0.2.1 (gateway IP) -> Gateway MAC
+After Spoofing: 10.0.2.1 (gateway IP) -> Attacker's MAC
+Gateway's ARP Table:
+
+Original Entry: 10.0.2.7 (victim IP) -> Victim's MAC
+After Spoofing: 10.0.2.7 (victim IP) -> Attacker's MAC
+Resulting Network Traffic Flow
+Victim's Traffic:
+
+When the victim (10.0.2.7) wants to send data to the gateway (10.0.2.1), it sends the data to the attacker's MAC address because its ARP table now maps 10.0.2.1 to the attacker's MAC.
+Gateway's Traffic:
+
+When the gateway (10.0.2.1) wants to send data to the victim (10.0.2.7), it sends the data to the attacker's MAC address because its ARP table now maps 10.0.2.7 to the attacker's MAC.
+Aftermath and Potential Problems
+Man-in-the-Middle (MitM) Attack:
+
+The attacker can intercept all traffic between the victim and the gateway. This enables the attacker to:
+Monitor Traffic: Read sensitive information such as passwords, emails, and other unencrypted data.
+Modify Traffic: Alter the data being transmitted, potentially injecting malicious content.
+Drop Traffic: Discard the packets, effectively disrupting the communication.
+Denial of Service (DoS):
+
+By not forwarding the packets to the intended recipient, the attacker can cause a denial of service, making it impossible for the victim and the gateway to communicate.
+Network Instability:
+
+Continuous ARP spoofing can cause network instability. Other devices might also be affected due to frequent changes in the ARP table entries.
+Detection by Network Security Systems:
+
+Network monitoring tools and intrusion detection systems (IDS) can detect unusual ARP traffic patterns and raise alerts. Security measures such as static ARP entries, dynamic ARP inspection (DAI), and other security protocols can be used to prevent or detect ARP spoofing.
+Problems Faced by Devices on the Network
+Communication Disruption: Both the victim and the gateway will experience disruptions in their communication. The victim might not be able to access the internet or network resources properly, and the gateway might not be able to reach the victim.
+
+Data Breach: Sensitive information can be compromised if the attacker intercepts unencrypted data.
+
+Performance Degradation: The constant injection of ARP packets and rerouting of traffic through the attacker can slow down network performance.
+
+Mitigation Measures
+Static ARP Entries:
+
+Manually configure ARP entries on critical devices to ensure that they always have the correct MAC addresses associated with IP addresses.
+Dynamic ARP Inspection (DAI):
+
+Use DAI on switches to prevent ARP spoofing attacks by validating ARP packets against a trusted database.
+Use Secure Protocols:
+
+Use encrypted protocols (e.g., HTTPS, SSH) to ensure that even if traffic is intercepted, the attacker cannot read or modify the data.
+Network Monitoring:
+
+Deploy network monitoring tools to detect and respond to suspicious ARP traffic patterns.
+Regular Network Audits:
+
+Conduct regular audits and scans of the network to identify and mitigate potential vulnerabilities.
